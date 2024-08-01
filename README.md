@@ -13,6 +13,12 @@ This Node.js application fetches dummy JSON data, stores it locally, and provide
 ## Setup and Running Locally
 
 1. **Clone the repository** to your local machine.
+    - clone the repo
+    ```
+        git clone git@github.com:Amanyadav207/rocketium_assignment.git
+
+        cd rocketium_assignment
+    ```
 
 2. **Install dependencies**:
     ```bash

@@ -4,7 +4,7 @@ const path = require('path');
 require('dotenv').config();
 
 const DATA_URL = process.env.DUMMY_URL;
-const DATA_FILE_PATH = path.join(__dirname, '..', 'data', 'dummyData.json');
+const DATA_FILE_PATH = path.join(__dirname, '..', 'dummyData.json');
 
 const fetchDataAndStore = async () => {
   try {
