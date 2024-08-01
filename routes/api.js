@@ -18,18 +18,13 @@ router.get('/data', async (req, res, next) => {
   try {
     let jsonData = await readFile();
 
-    const { filterBy, value, search, sortBy } = req.query;
+    const { filterBy, value, sortBy } = req.query;
 
     if (filterBy && value) {
       jsonData = jsonData.filter(item => item[filterBy] === value);
     }
 
-    if (search) {
-      const searchKeys = ['name', 'language', 'bio'];
-      jsonData = jsonData.filter(item =>
-        searchKeys.some(key => item[key].toLowerCase().includes(search.toLowerCase()))
-      );
-    }
+    
 
     if (sortBy) {
       jsonData.sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1));
