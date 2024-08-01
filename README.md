@@ -1,13 +1,13 @@
 # Node.js Data API Project
 
 ## Project Overview
-This Node.js application fetches dummy JSON data, stores it locally, and provides an API endpoint to serve this data with filtering, searching, and sorting capabilities. It demonstrates skills in Node.js development, API implementation, and data handling.
+This Node.js application fetches dummy JSON data, stores it locally, and provides an API endpoint to serve this data with filtering and sorting capabilities. It demonstrates skills in Node.js development, API implementation, and data handling.
 
 ## Features
 
 - Data fetching and local storage
 - RESTful API endpoint for data retrieval
-- Filtering, searching, and sorting functionalities
+- Filtering and sorting functionalities
 - Error handling and logging
 
 ## Setup and Running Locally
@@ -48,7 +48,6 @@ Retrieves the stored data with optional filtering, searching, and sorting.
 
 - `filterBy`: Field to filter by
 - `value`: Value to filter for
-- `search`: Search term
 - `sortBy`: Field to sort by
 
 ### Example Requests:
