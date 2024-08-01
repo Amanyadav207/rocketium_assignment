@@ -1,25 +1,31 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const router = express.Router();
 
 const dataFilePath = path.join(__dirname, '..', 'data', 'dummyData.json');
 
-router.get('/data', (req, res) => {
-  fs.readFile(dataFilePath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: 'Failed to read data' });
-    }
+const readFile = async () => {
+  try {
+    const data = await fs.readFile(dataFilePath, 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    throw new Error('Failed to read data file');
+  }
+};
 
-    let jsonData = JSON.parse(data);
+router.get('/data', async (req, res, next) => {
+  try {
+    let jsonData = await readFile();
 
     const { filterBy, value, search, sortBy } = req.query;
+
     if (filterBy && value) {
       jsonData = jsonData.filter(item => item[filterBy] === value);
     }
 
     if (search) {
-      const searchKeys = ['name', 'language', 'id'];
+      const searchKeys = ['name', 'language', 'bio'];
       jsonData = jsonData.filter(item =>
         searchKeys.some(key => item[key].toLowerCase().includes(search.toLowerCase()))
       );
@@ -30,7 +36,9 @@ router.get('/data', (req, res) => {
     }
 
     res.json(jsonData);
-  });
+  } catch (err) {
+    next(err); 
+  }
 });
 
 module.exports = router;
