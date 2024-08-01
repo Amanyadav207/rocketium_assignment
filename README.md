@@ -29,7 +29,7 @@ This Node.js application fetches dummy JSON data, stores it locally, and provide
 
 4. **Initialize the data**:
     ```bash
-    npm run init-data
+    npm run init
     ```
 
 5. **Start the server**:
